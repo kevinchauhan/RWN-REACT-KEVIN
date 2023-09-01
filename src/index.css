@@ -1,0 +1,54 @@
+/* google font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  list-style: none;
+}
+
+
+.container {
+  max-width: 1140px;
+  padding-left: 12px;
+  padding-right: 12px;
+  margin: auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-3 {
+  width: 25%;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.col-4 {
+  width: 33.33%;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.py-40 {
+  padding: 40px 0;
+}
+
+.px-0 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (min-width:1400px) {
+  .container {
+    max-width: 1320px;
+  }
+
+  .col-xl-3 {
+    width: 25%;
+  }
+}
