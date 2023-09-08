@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Card from './Components/Card'
 
-const ProductList = () => {
+const Pr2 = () => {
     const data = [
         {
             "id": 1,
@@ -557,21 +557,23 @@ const ProductList = () => {
         }
     ]
     const [products, setProducts] = useState(data)
-    
+
 
     return (
         <>
-            <div className="container py-40 px-0">
-                <h1 style={{ marginBottom: "20px", padding: '0 12px' }}>Product List</h1>
-                <div className="row">
-                    {products.map(product => {
-                        return <Card data={product} key={product.id} />
-                    })
-                    }
+            <section className='product-list'>
+                <div className="container py-40 px-0">
+                    <h1 style={{ marginBottom: "20px", padding: '0 12px' }}>Product List</h1>
+                    <div className="row">
+                        {products.map(product => {
+                            return <Card data={product} key={product.id} />
+                        })
+                        }
+                    </div>
                 </div>
-            </div>
+            </section>
         </>
     )
 }
 
-export default ProductList
+export default Pr2

@@ -25,3 +25,5 @@ yarn-error.log*
 # my
 productList.json
 test.js
+/src/alibaba
+/src/pr3

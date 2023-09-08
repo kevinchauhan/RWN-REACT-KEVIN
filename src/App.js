@@ -1,10 +1,9 @@
 import React from 'react'
-import ProductList from './PR2/ProductList'
-
+import Pr2 from './PR2/Pr2'
 const App = () => {
   return (
     <>
-      <ProductList />
+      <Pr2 />
     </>
   )
 }
