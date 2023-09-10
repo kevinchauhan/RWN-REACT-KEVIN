@@ -1,6 +1,7 @@
 import React from 'react'
 import instagram from '../instagram.svg'
 import twitter from '../twitter.svg'
+import Button from './Button'
 
 const Header = () => {
     return (
@@ -22,7 +23,7 @@ const Header = () => {
                             <a href="#"><img src={instagram} alt="" /></a>
                         </li>
                     </ul>
-                    <button className='btn btn-primary text-uppercase text-white px-4 rounded-3'>download cv</button>
+                    <Button />
                 </div>
             </div>
         </header>
