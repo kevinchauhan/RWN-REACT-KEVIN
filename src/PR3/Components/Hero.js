@@ -26,7 +26,7 @@ const Hero = () => {
         </div>
       </div>
       <Nav setTabs={setSelectedTab} setActive={setIsActive} />
-      <div className={`bg-secondary rounded-4 ${isActive ? 'p-5' : ''}`}>
+      <div className={`bg-secondary rounded-4 ${isActive ? 'p-6' : ''}`}>
         {selectedTab === 'about' ? <About /> : ''}
         {selectedTab === 'resume' ? <Resume /> : ''}
       </div>

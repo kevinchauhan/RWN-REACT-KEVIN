@@ -16,9 +16,16 @@ $warning: rgb(255, 179, 36);
 
 @import '../../../node_modules/bootstrap/scss/bootstrap.scss';
 
+.text-mediun-light {
+    color: #d3d7df  ;
+}
+
 body {
     background-color: rgb(29, 27, 27);
     color: #fff;
+}
+.p-6{
+    padding: 4rem;
 }
 
 .background_shape {
@@ -168,9 +175,10 @@ body {
 }
 
 // ----------about----------------
-.about-img{
+.about-img {
     width: 60%;
 }
+
 .about-details {
     width: fit-content;
     padding: 25px 34px;
@@ -185,7 +193,8 @@ body {
         font-weight: 400;
         opacity: .85;
     }
-    h6{
+
+    h6 {
         margin-bottom: 0;
         font-size: 15px;
     }
@@ -194,10 +203,12 @@ body {
         border-bottom: 1px dashed rgba(255, 255, 255, .3);
         padding: 10px 0;
     }
-    li:first-child{
+
+    li:first-child {
         padding-top: 0;
     }
-    li:last-child{
+
+    li:last-child {
         border: none;
         padding-bottom: 0;
     }
@@ -205,20 +216,59 @@ body {
     @media (width>=1400px) {
         padding: 36px 40px 35px;
 
-        h6{
+        h6 {
             font-size: 16px;
         }
 
-        li{
+        li {
             padding: 13px 0;
         }
     }
 }
-.about-des{
-    p{
+
+.about-des {
+    p {
         margin: 25px 0;
     }
-    button{
+
+    button {
         margin-top: 10px;
+    }
+}
+
+
+// ------------- Resume ----------------
+.circle-svg{
+    rotate: -90deg;
+}
+.circle{
+    fill: none;
+    stroke: $primary;
+    stroke-dasharray: 565;
+}
+.circle-1{
+    stroke-dashoffset: 113;
+}
+.circle-2{
+    stroke-dashoffset: 141;
+}
+.circle-3{
+    stroke-dashoffset: 56;
+}
+.circle-4{
+    stroke-dashoffset: 197;
+}
+
+.circular-bar{
+    position: relative;
+    // width: fit-content;
+    
+    span{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        color: $primary;
+        font-size: 20px;
     }
 }

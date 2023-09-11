@@ -1,9 +1,10 @@
 import React from 'react'
-import Pr2 from './PR2/Pr2'
+import Pr3 from './PR3/Pr3'
+
 const App = () => {
   return (
     <>
-      <Pr2 />
+      <Pr3 />
     </>
   )
 }

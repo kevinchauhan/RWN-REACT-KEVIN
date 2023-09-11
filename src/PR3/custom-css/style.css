@@ -11981,9 +11981,17 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.text-mediun-light {
+  color: #d3d7df;
+}
+
 body {
   background-color: rgb(29, 27, 27);
   color: #fff;
+}
+
+.p-6 {
+  padding: 4rem;
 }
 
 .background_shape {
@@ -12179,4 +12187,42 @@ body {
 }
 .about-des button {
   margin-top: 10px;
+}
+
+.circle-svg {
+  rotate: -90deg;
+}
+
+.circle {
+  fill: none;
+  stroke: rgb(255, 69, 27);
+  stroke-dasharray: 565;
+}
+
+.circle-1 {
+  stroke-dashoffset: 113;
+}
+
+.circle-2 {
+  stroke-dashoffset: 141;
+}
+
+.circle-3 {
+  stroke-dashoffset: 56;
+}
+
+.circle-4 {
+  stroke-dashoffset: 197;
+}
+
+.circular-bar {
+  position: relative;
+}
+.circular-bar span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(255, 69, 27);
+  font-size: 20px;
 }/*# sourceMappingURL=style.css.map */
