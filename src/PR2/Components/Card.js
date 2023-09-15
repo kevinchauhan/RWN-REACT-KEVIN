@@ -6,7 +6,7 @@ const Card = (props) => {
   const discountedPrice = Math.round(price-((discountPercentage*price)/100))
 
   return (
-    <div className='col-4 pb-2 col-xl-3'>
+    <div className='col-4 pb-2'>
       <div className="card">
         <div className="card-img">
           <img src={thumbnail} alt="this is card" width={'100%'} />
