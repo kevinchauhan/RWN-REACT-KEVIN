@@ -2,8 +2,8 @@ import React from 'react'
 import './card.css'
 
 const Card = (props) => {
-  const { title, price,discountPercentage, description, rating, category, thumbnail } = props.data
-  const discountedPrice = Math.round(price-((discountPercentage*price)/100))
+  const { title, price, discountPercentage, description, rating, category, thumbnail } = props.data
+  const discountedPrice = Math.round(price - ((discountPercentage * price) / 100))
 
   return (
     <div className='col-4 pb-2'>

@@ -1,10 +1,10 @@
 import React from 'react'
-import Pr4 from './PR4/Pr4'
+import Pr5 from './PR5/Pr5'
 
 const App = () => {
   return (
     <>
-      <Pr4 />
+      <Pr5 />
     </>
   )
 }
