@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 const Form = ({ comments, setComments }) => {
     const [input, setInput] = useState({ name: '', des: '' })
+    const [errors, setErrors] = useState({ name: '', des: '' })
 
     const handleChange = (e) => {
         const key = e.target.name
@@ -11,10 +12,26 @@ const Form = ({ comments, setComments }) => {
 
     const handleForm = (e) => {
         e.preventDefault()
+        const verify = validate()
+        if (verify.name || verify.des) {
+            setErrors(verify)
+        } else {
+            setErrors({ name: '', des: '' })
+            const time = getDate()
+            setComments([...comments, { ...input, time }])
+            setInput({ name: '', des: '' })
+        }
+    }
 
-        const time = getDate()
-        setComments([...comments, { ...input, time }])
-        setInput({ name: '', des: '' })
+    const validate = () => {
+        const errors = {}
+        if (input.name.length < 1) {
+            errors.name = 'please enter name'
+        }
+        if (input.des.length < 1) {
+            errors.des = 'please write something'
+        }
+        return errors
     }
 
     const getDate = () => {
@@ -52,16 +69,33 @@ const Form = ({ comments, setComments }) => {
                             autoComplete="name"
                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3 outline-none"
                         />
+                        <p className='text-red-400 text-sm'>{errors.name}</p>
                     </div>
                 </div>
-                <div>
+                {/* <div>
+                    <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
+                        Photo
+                    </label>
+                    <div className="mt-2">
+                        <input
+                            onChange={handleChange}
+                            id="photo"
+                            name="photo"
+                            type='file'
+                            autoComplete="name"
+                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3 outline-none"
+                        />
+                    </div>
+                </div > */}
+                <div >
                     <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
                         Write your comment
                     </label>
                     <div className="mt-2">
                         <textarea onChange={handleChange} value={input.des} name="des" id="des" cols="30" rows="5" className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3 outline-none'></textarea>
+                        <p className='text-red-400 text-sm'>{errors.des}</p>
                     </div>
-                </div>
+                </div >
 
                 <div>
                     <button
@@ -71,9 +105,9 @@ const Form = ({ comments, setComments }) => {
                         Post Comment
                     </button>
                 </div>
-            </form>
+            </form >
 
-        </div>
+        </div >
     )
 }
 
