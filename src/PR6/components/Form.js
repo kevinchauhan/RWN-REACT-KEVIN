@@ -50,7 +50,7 @@ const Form = ({ comments, setComments }) => {
             [11, 'Dec'],
         ])
         const date = new Date()
-        return `${date.getDate()} ${month.get(date.getMonth())} ${date.getFullYear()}`
+        return `${date.getDate()} ${month.get(date.getMonth())} ${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
     }
 
     return (
