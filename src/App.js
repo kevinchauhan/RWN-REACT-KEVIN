@@ -1,10 +1,10 @@
 import React from 'react'
-import Pr6 from './PR6/Pr6'
+import Timer from './PR5/Timer'
 
 const App = () => {
   return (
     <>
-      <Pr6 />
+      <Timer />
     </>
   )
 }
