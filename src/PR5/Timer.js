@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import './style.css'
+import { useEffect } from 'react'
 
 const Timer = () => {
     const [count, setCount] = useState(0)
     const [isActive, setIsActive] = useState(false)
     if (isActive && count > 0) {
-        const timer = setInterval(() => {
+        const timer = setTimeout(() => {
             setCount(count - 1)
         }, 1000)
     }
@@ -17,6 +18,12 @@ const Timer = () => {
             setIsActive(false)
         }
     }
+
+    useEffect(() => {
+        if (count < 1) {
+            setIsActive(false)
+        }
+    }, [count])
 
     return (
         <div className='h-screen flex justify-center items-center bg-gray-900'>
