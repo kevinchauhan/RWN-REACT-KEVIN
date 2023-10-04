@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react'
+import Table from './Table'
 
 const Form = () => {
-    const [input, setInput] = useState({ name: '', email: '' })
-    const [data, setData] = useState([])
-    console.log(data)
-
-    useEffect(() => {
-        const local = JSON.parse(localStorage.getItem('user-data'))
-        if (local) {
-            setData(local)
+    const initialInput = { name: '', email: '' }
+    const [input, setInput] = useState(initialInput)
+    const [editId, setEditId] = useState(null)
+    const [isEdit, setIsEdit] = useState(false)
+    const [data, setData] = useState(() => {
+        const localData = JSON.parse(localStorage.getItem('user-data'))
+        if (localData) {
+            return localData
         }
-        console.log('first local')
-    }, [])
+        return []
+    })
 
     useEffect(() => {
-        console.log('render when data changed')
-        // console.log(data)
+        localStorage.setItem('user-data', JSON.stringify(data))
     }, [data])
 
     const handleChange = (e) => {
@@ -24,19 +24,42 @@ const Form = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        setData([input])
+        if (isEdit) {
+            const oldData = [...data]
+            oldData[editId] = input
+            setData(oldData)
+            setIsEdit(false)
+        } else {
+            setData([...data, input])
+        }
+        setInput(initialInput)
+    }
+
+    const handleEdit = (id) => {
+        setInput({ ...data[id], id })
+        setEditId(id)
+        setIsEdit(true)
+    }
+
+    const handleDelete = (id) => {
+        const oldData = [...data]
+        oldData.splice(id, 1)
+        setData(oldData)
     }
 
     return (
-        <form onSubmit={handleSubmit} className='text-center' >
-            <div>
-                <input className='border px-3 py-1 my-2 mx-2' type="text" value={input.name} name='name' onChange={handleChange} />
-            </div>
-            <div>
-                <input className='border px-3 py-1 my-2 mx-2' type="email" value={input.email} name='email' onChange={handleChange} />
-            </div>
-            <button className='bg-green-500 px-5 py-1 rounded'>Submit</button>
-        </form >
+        <>
+            <form onSubmit={handleSubmit} className='text-center' >
+                <div>
+                    <input className='border px-3 py-1 my-2 mx-2' type="text" value={input.name} name='name' onChange={handleChange} />
+                </div>
+                <div>
+                    <input className='border px-3 py-1 my-2 mx-2' type="email" value={input.email} name='email' onChange={handleChange} />
+                </div>
+                <button className='bg-green-500 px-5 py-1 rounded'>{isEdit ? 'Update' : 'Add'}</button>
+            </form >
+            <Table data={data} handleEdit={handleEdit} handleDelete={handleDelete} isEdit={isEdit} />
+        </>
     )
 }
 
