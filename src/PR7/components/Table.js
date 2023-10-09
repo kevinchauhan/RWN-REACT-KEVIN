@@ -43,7 +43,7 @@ const Table = ({ data, handleEdit, handleDelete, isEdit }) => {
                     )}
                 </tbody>
             </table>
-            {data.length < 1 ? <h3 className='text-lg text-gray-600 text-center mt-3'>No data found</h3> : ''}
+            {data.length < 1 ? <h3 className='text-lg text-gray-600 text-center mt-3 w-full'>No data found</h3> : ''}
         </div>
 
     )

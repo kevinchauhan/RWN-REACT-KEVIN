@@ -45,6 +45,7 @@ const Form = () => {
         if (verify.name || verify.email || verify.password || verify.confirmPassword || verify.mobile || verify.course || verify.gender || verify.state || verify.city || verify.address || verify.hobbies) {
             setErrors(verify)
         } else {
+            setErrors(initialInput)
             if (isEdit) {
                 const oldData = [...data]
                 oldData[editId] = input
@@ -58,7 +59,7 @@ const Form = () => {
         }
     }
 
-    const resetFields = () => {
+    const resetFields = (e) => {
         setInput(initialInput)
         setCities([])
         setIsEdit(false)
