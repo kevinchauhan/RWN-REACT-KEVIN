@@ -137,8 +137,8 @@ const Form = () => {
                 <h1 className='text-2xl px-6 text-gray-800 border-b border-indigo-400 pb-3'>Registration Form</h1>
                 <div className="mb-10 sm:mx-auto sm:w-full px-5">
                     <form className="" onSubmit={handleSubmit} action="#" method="POST">
-                        <div className='flex flex-wrap items-end space-y-6'>
-                            <div className='w-1/2 px-3'>
+                        <div className='flex flex-wrap items-start space-y-6'>
+                            <div className='w-1/2 px-3 mt-6'>
                                 <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">Name</label>
                                 <div className="mt-2">
                                     <input id="name" name="name" type="text" autoComplete="name" className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value={input.name} onChange={handleChange} />
