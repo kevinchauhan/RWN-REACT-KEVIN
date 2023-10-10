@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Table = ({ data, handleEdit, handleDelete, isEdit }) => {
     return (
@@ -24,7 +25,7 @@ const Table = ({ data, handleEdit, handleDelete, isEdit }) => {
                 <tbody>
                     {data.map((e, i) =>
                         <tr className="bg-white border-b" key={i}>
-                            <td className="px-6 py-4 border-r border-gray-400">{e.name}</td>
+                            <td className="px-6 py-4 border-r border-gray-400"><Link to={`/student/${e.id}`} >{e.name}</Link></td>
                             <td className="px-6 py-4 border-r border-gray-400">{e.email}</td>
                             <td className="px-6 py-4 border-r border-gray-400">{e.password}</td>
                             <td className="px-6 py-4 border-r border-gray-400">{e.confirmPassword}</td>

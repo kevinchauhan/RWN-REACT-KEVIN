@@ -3,22 +3,15 @@ import Table from './Table'
 import DropDown from './DropDown'
 import states from './states.json'
 
-const Form = () => {
+const Form = ({ data, setData }) => {
 
     const initialInput = { name: '', email: '', password: '', confirmPassword: '', mobile: '', course: '', hobbies: '', gender: '', state: '', city: '', address: '' }
-
     const [input, setInput] = useState(initialInput)
     const [errors, setErrors] = useState(initialInput)
     const [cities, setCities] = useState([])
     const [editId, setEditId] = useState(null)
     const [isEdit, setIsEdit] = useState(false)
-    const [data, setData] = useState(() => {
-        const localData = JSON.parse(localStorage.getItem('user-data'))
-        if (localData) {
-            return localData
-        }
-        return []
-    })
+
 
     useEffect(() => {
         localStorage.setItem('user-data', JSON.stringify(data))
@@ -52,7 +45,9 @@ const Form = () => {
                 setData(oldData)
                 setIsEdit(false)
             } else {
-                setData([...data, input])
+                const date = new Date()
+                const id = date.getTime()
+                setData([...data, { ...input, id }])
             }
             resetFields()
             e.target.reset()
@@ -196,9 +191,9 @@ const Form = () => {
                                 <label htmlFor="gender" className="block text-sm font-medium leading-6 text-gray-900">Gender</label>
                                 <div className="mt-2">
                                     Male
-                                    <input id="male" name="gender" value='male' type="radio" className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 mx-3" onChange={handleChange} />
+                                    <input id="male" name="gender" value='male' type="radio" className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 mx-3" onChange={handleChange} checked={input.gender === 'male' ? true : false} />
                                     Female
-                                    <input id="female" name="gender" value='female' type="radio" className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 mx-3" onChange={handleChange} />
+                                    <input id="female" name="gender" value='female' type="radio" className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 mx-3" onChange={handleChange} checked={input.gender === 'female' ? true : false} />
                                     <p className='text-red-400 text-sm'>{errors.gender}</p>
                                 </div>
                             </div>
