@@ -1,6 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Link } from "react-router-dom";
 
-const StudentDetails = ({ data, handleEdit, handleDelete, isEdit }) => {
+const StudentDetails = () => {
+
+    const [data, setData] = useState(() => {
+        const localData = JSON.parse(localStorage.getItem('user-data'))
+        return localData || []
+    })
+
     return (
 
         <div className="relative overflow-x-auto flex flex-wrap px-3">
@@ -24,7 +31,8 @@ const StudentDetails = ({ data, handleEdit, handleDelete, isEdit }) => {
                 <tbody>
                     {data.map((e, i) =>
                         <tr className="bg-white border-b" key={i}>
-                            <td className="px-6 py-4 border-r border-gray-400"><Link to={`/student/${e.id}`} >{e.name}</Link></td>
+                            {/* <td className="px-6 py-4 border-r border-gray-400"><Link to={`/student`} >{e.name}</Link></td> */}
+                            <td className="px-6 py-4 border-r border-gray-400">{e.name}</td>
                             <td className="px-6 py-4 border-r border-gray-400">{e.email}</td>
                             <td className="px-6 py-4 border-r border-gray-400">{e.password}</td>
                             <td className="px-6 py-4 border-r border-gray-400">{e.confirmPassword}</td>
@@ -35,16 +43,15 @@ const StudentDetails = ({ data, handleEdit, handleDelete, isEdit }) => {
                             <td className="px-6 py-4 border-r border-gray-400">{e.city}</td>
                             <td className="px-6 py-4 border-r border-gray-400">{e.hobbies}</td>
                             <td className="px-6 py-4 border-r border-gray-400">{e.address}</td>
-                            <td className="px-6 py-4">
-                                <button className='text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded' onClick={() => handleEdit(i)}>Edit</button>
-                                <button disabled={isEdit} className='text-white bg-red-600 hover:bg-red-700 disabled:opacity-75 disabled:cursor-not-allowed px-3 py-1 rounded ml-2' onClick={() => handleDelete(i)}>Delete</button>
-                            </td>
+                            {/* <td className="px-6 py-4">
+                                <button className='text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded' >Edit</button>
+                                <button className='text-white bg-red-600 hover:bg-red-700 disabled:opacity-75 disabled:cursor-not-allowed px-3 py-1 rounded ml-2'> Delete</button>
+                            </td> */}
                         </tr>
                     )}
                 </tbody>
             </table>
-            {data.length < 1 ? <h3 className='text-lg text-gray-600 text-center mt-3 w-full'>No data found</h3> : ''}
-        </div>
+        </div >
 
     )
 }
