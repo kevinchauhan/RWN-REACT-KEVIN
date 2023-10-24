@@ -49,7 +49,7 @@ const StudentDetails = () => {
                             <td className="px-6 py-4 border-r border-gray-400">{e.hobbies}</td>
                             <td className="px-6 py-4 border-r border-gray-400">{e.address}</td>
                             <td className="px-6 py-4">
-                                <Link to={'/view'} className='text-white bg-orange-600 hover:bg-red-700 px-3 py-1 rounded'>View</Link>
+                                {/* <Link to={'/view'} className='text-white bg-orange-600 hover:bg-red-700 px-3 py-1 rounded'>View</Link> */}
                                 <Link to={`/edit/${i}`} className='text-white bg-blue-600 hover:bg-blue-700 ml-2 px-3 py-1 rounded' >Edit</Link>
                                 <button className='text-white bg-red-600 hover:bg-red-700 disabled:opacity-75 disabled:cursor-not-allowed px-3 py-0.5 rounded ml-2' onClick={() => handleDelete(i)}>Delete</button>
                             </td>
