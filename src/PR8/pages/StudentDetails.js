@@ -36,6 +36,7 @@ const StudentDetails = () => {
                     </tr>
                 </thead>
                 <tbody>
+
                     {data.map((e, i) =>
                         <tr className="bg-white border-b" key={i}>
                             {/* <td className="px-6 py-4 border-r border-gray-400"><Link to={`/student`} >{e.name}</Link></td> */}
@@ -55,7 +56,11 @@ const StudentDetails = () => {
                             </td>
                         </tr>
                     )}
+                    {data.length < 1 ?
+                        <td colSpan={10} className="px-6 py-4">No record found!</td> : ''
+                    }
                 </tbody>
+
             </table>
         </div >
 
