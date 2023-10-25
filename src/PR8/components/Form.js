@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Table from './Table'
 import DropDown from './DropDown'
 import states from './states.json'
 import { useNavigate } from 'react-router-dom'
@@ -51,14 +50,14 @@ const Form = ({ data, setData, id, edit }) => {
                 setData([...data, { ...input, id }])
             }
             setTimeout(() => {
-                navigate('/')
+                navigate('/studentdetails')
             }, 500)
         }
     }
 
     const resetFields = (e) => {
         if (isEdit) {
-            navigate('/')
+            navigate('/studentdetails')
         }
         setInput(initialInput)
         setCities([])
