@@ -17,32 +17,55 @@ const StudentDetails = () => {
         if (input.gender.length > 0) {
             getGender()
         }
+
+    }, [input.gender])
+
+    useEffect(() => {
         if (input.option.length > 0) {
             getOption()
         }
 
-    }, [input])
+    }, [input.option])
 
     const getGender = () => {
-        const filtered = data.filter(e => {
-            if (e.gender === input.gender) {
-                return e
-            }
-        })
-        setFilteredData(filtered)
+        if (input.gender === 'both') {
+            setFilteredData(data)
+        } else {
+            const filtered = data.filter(e => {
+                if (e.gender === input.gender) {
+                    return e
+                }
+            })
+            setFilteredData(filtered)
+        }
     }
 
     const getOption = () => {
-        const sortedData = data.sort((a, b) => {
-            return (a[input.option] - b[input.option])
+        const newData = [...filteredData]
+        newData.sort(function (a, b) {
+            if (input.option === 'marks') {
+                return (b.marks - a.marks)
+            }
+            return a[input.option].localeCompare(b[input.option])
         })
-        console.log(sortedData)
+        setFilteredData(newData)
     }
 
     const handleDelete = (id) => {
         const oldData = [...data]
         oldData.splice(id, 1)
         setData(oldData)
+    }
+
+    const handleSearch = (e) => {
+        const value = e.target.value.toUpperCase()
+        const newData = data.filter(e => {
+            if (e.name.toUpperCase().includes(value)) {
+                return e
+            }
+        })
+
+        setFilteredData(newData)
     }
 
     return (
@@ -52,15 +75,18 @@ const StudentDetails = () => {
                 <label htmlFor="" className='font-semibold'>By gender : </label>
                 <input type="radio" name="gender" value={'male'} onChange={handleChange} className='' id="" /> Male
                 <input type="radio" name="gender" value={'female'} onChange={handleChange} className='ml-2' id="" /> Female
+                <input type="radio" name="gender" value={'both'} onChange={handleChange} className='ml-2' id="" /> Both
 
                 <label htmlFor="" className='font-semibold ml-3'>By : </label>
                 <select name="option" id="" className='border ml-3' onChange={handleChange} value={input.option}>
                     <option value="" disabled>--select--</option>
                     <option value="name">Name</option>
-                    <option value="address">Address</option>
+                    <option value="state">State</option>
                     <option value="marks">Marks</option>
                 </select>
 
+                <label htmlFor="" className='font-semibold ml-3'>Search by name : </label>
+                <input type="text" name='search' className='border py-0.5 px-3' onKeyUp={handleSearch} />
 
             </div>
             <div className="relative overflow-x-auto flex flex-wrap px-3 mb-10">
@@ -75,6 +101,7 @@ const StudentDetails = () => {
                             <th scope="col" className="px-6 py-3 border-r border-gray-500">Email</th>
                             <th scope="col" className="px-6 py-3 border-r border-gray-500">Gender</th>
                             <th scope="col" className="px-6 py-3 border-r border-gray-500">Mobile</th>
+                            <th scope="col" className="px-6 py-3 border-r border-gray-500">Marks</th>
                             <th scope="col" className="px-6 py-3 border-r border-gray-500">Course</th>
                             <th scope="col" className="px-6 py-3 border-r border-gray-500">State</th>
                             <th scope="col" className="px-6 py-3 border-r border-gray-500">City</th>
@@ -92,6 +119,7 @@ const StudentDetails = () => {
                                 <td className="px-6 py-4 border-r border-gray-400">{e.email}</td>
                                 <td className="px-6 py-4 border-r border-gray-400">{e.gender}</td>
                                 <td className="px-6 py-4 border-r border-gray-400">{e.mobile}</td>
+                                <td className="px-6 py-4 border-r border-gray-400">{e.marks}</td>
                                 <td className="px-6 py-4 border-r border-gray-400">{e.course}</td>
                                 <td className="px-6 py-4 border-r border-gray-400">{e.state}</td>
                                 <td className="px-6 py-4 border-r border-gray-400">{e.city}</td>

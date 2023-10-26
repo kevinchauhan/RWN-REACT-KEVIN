@@ -9,7 +9,6 @@ const Edit = () => {
     })
 
     const params = useParams()
-    console.log(params)
     return (
         <Form id={params.id} data={data} setData={setData} edit={true} />
     )

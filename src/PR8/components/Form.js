@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 const Form = ({ data, setData, id, edit }) => {
 
-    const initialInput = { name: '', email: '', password: '', confirmPassword: '', mobile: '', course: '', hobbies: '', gender: '', state: '', city: '', address: '' }
+    const initialInput = { name: '', email: '', password: '', confirmPassword: '', mobile: '', course: '', hobbies: '', gender: '', state: '', city: '', address: '', marks: '' }
     const [input, setInput] = useState(edit ? data[id] : initialInput)
     const [errors, setErrors] = useState(initialInput)
     const [cities, setCities] = useState([])
@@ -87,6 +87,9 @@ const Form = ({ data, setData, id, edit }) => {
         }
         if (input.course.length < 1) {
             errors.course = 'please enter course'
+        }
+        if (input.marks.length < 1) {
+            errors.marks = 'please enter marks'
         }
         if (input.gender.length < 1) {
             errors.gender = 'select your gender'
@@ -188,6 +191,14 @@ const Form = ({ data, setData, id, edit }) => {
                                         <option value="ba">BA</option>
                                     </select>
                                     <p className='text-red-400 text-sm'>{errors.course}</p>
+                                </div>
+                            </div>
+
+                            <div className='w-1/3 px-3'>
+                                <label htmlFor="mobile" className="block text-sm font-medium leading-6 text-gray-900">Marks</label>
+                                <div className="mt-2">
+                                    <input id="marks" name="marks" type="number" className="block w-full rounded-md border-0 py-1.5 px-3 text-g px-3ray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value={input.marks} onChange={handleChange} maxLength={2} />
+                                    <p className='text-red-400 text-sm'>{errors.marks}</p>
                                 </div>
                             </div>
 
