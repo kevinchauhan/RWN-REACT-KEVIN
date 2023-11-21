@@ -8,7 +8,9 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Header from './components/Header'
 
-const Pr8 = () => {
+const Pr8 = (props) => {
+    console.log(props.data)
+
     const [currUser, setCurrUser] = useState(() => {
         const curr = JSON.parse(localStorage.getItem('curr-user'))
         return curr || null

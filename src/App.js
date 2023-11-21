@@ -1,13 +1,11 @@
 import React from 'react'
-import Timer from './PR5/Timer'
-import Pr7 from './PR7/Pr7'
 import './App.css'
-import Pr8 from './PR8/Pr8'
+import Pr10 from './PR10/Pr10'
 
 const App = () => {
   return (
     <>
-      <Pr8 />
+      <Pr10 />
     </>
   )
 }

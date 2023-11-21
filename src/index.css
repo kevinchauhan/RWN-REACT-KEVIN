@@ -10,6 +10,10 @@
   text-decoration: none;
 }
 
+body{
+  background-color: #27272e;
+}
+
 
 .bg-white {
   background-color: #fff;
