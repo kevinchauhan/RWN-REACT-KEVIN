@@ -11,7 +11,6 @@ const Action = () => {
     }, [])
 
     const loadMovie = (url = 'https://api.themoviedb.org/3/movie/popular?api_key=bd8d05092e212f3f9c3e7ae7196c2ccd') => {
-        console.log('first')
         dispatch(getMovie(url))
     }
 
