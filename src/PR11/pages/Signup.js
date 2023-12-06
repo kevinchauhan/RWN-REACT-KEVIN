@@ -36,7 +36,7 @@ const Signup = () => {
             }
             setErrors({})
             const res = await axios.post('http://localhost:5500/users', input)
-            navigate('/')
+            navigate('/login')
         } catch (error) {
             console.log(error)
         }
