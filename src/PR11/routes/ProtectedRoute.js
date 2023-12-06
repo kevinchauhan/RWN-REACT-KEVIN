@@ -9,7 +9,7 @@ const ProtectedRoute = ({ Cmp }) => {
     useEffect(() => {
         axios.get('http://localhost:5500/current-user').then((res) => {
             if (Object.keys(res.data).length < 1) {
-                navigate('/')
+                navigate('/login')
             }
         })
     }, [authenticate])

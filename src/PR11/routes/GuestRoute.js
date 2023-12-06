@@ -10,7 +10,7 @@ const GuestRoute = ({ Cmp }) => {
     useEffect(() => {
         axios.get('http://localhost:5500/current-user').then((res) => {
             if (Object.keys(res.data).length > 0) {
-                navigate('/home')
+                navigate('/')
             }
         })
     }, [authenticate])

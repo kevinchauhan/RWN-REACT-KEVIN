@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Home from './pages/Home'
+import Product from './pages/Product'
 import Header from './components/Header'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
@@ -9,9 +9,11 @@ import AuthContext from './authContext'
 import ProtectedRoute from './routes/ProtectedRoute'
 import GuestRoute from './routes/GuestRoute'
 import axios from 'axios'
+import Home from './pages/Home'
 
 const Pr11 = () => {
     const [authenticate, setIsAuthenticate] = useState(null)
+
     useEffect(() => {
         axios.get('http://localhost:5500/current-user')
             .then((res) => {
@@ -22,15 +24,17 @@ const Pr11 = () => {
                 }
             })
     }, [])
+
     return (
         <>
             <BrowserRouter>
                 <AuthContext.Provider value={{ authenticate, setIsAuthenticate }}>
                     <Header />
                     <Routes>
-                        <Route path='/' element={<GuestRoute Cmp={<Login />} />} />
+                        <Route path='/' element={<Home />} />
+                        <Route path='/login' element={<GuestRoute Cmp={<Login />} />} />
                         <Route path='/signup' element={<GuestRoute Cmp={<Signup />} />} />
-                        <Route path='/home' element={<ProtectedRoute Cmp={<Home />} />} />
+                        <Route path='/product' element={<ProtectedRoute Cmp={<Product />} />} />
                         <Route path='/cart' element={<ProtectedRoute Cmp={<Cart />} />} />
                     </Routes>
                 </AuthContext.Provider>
