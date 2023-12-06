@@ -1,11 +1,12 @@
 import React from 'react'
 import './App.css'
-import Pr10 from './PR10/Pr10'
+import Pr11 from './PR11/Pr11'
 
 const App = () => {
+
   return (
     <>
-      <Pr10 />
+      <Pr11 />
     </>
   )
 }
