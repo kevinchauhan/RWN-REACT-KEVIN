@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import AuthContext from '../authContext'
 
 const GuestRoute = ({ Cmp }) => {
-    const { authenticate, setIsAuthenticate } = useContext(AuthContext)
+    const { authenticate, setAuthenticate } = useContext(AuthContext)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -13,6 +13,7 @@ const GuestRoute = ({ Cmp }) => {
                 navigate('/')
             }
         })
+            .catch(err => console.log(err))
     }, [authenticate])
 
     return (

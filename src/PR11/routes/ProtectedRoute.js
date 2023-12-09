@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import AuthContext from '../authContext'
 
 const ProtectedRoute = ({ Cmp }) => {
-    const { authenticate, setIsAuthenticate } = useContext(AuthContext)
+    const { authenticate, setAuthenticate } = useContext(AuthContext)
     const navigate = useNavigate()
     useEffect(() => {
         axios.get('http://localhost:5500/current-user').then((res) => {
@@ -12,6 +12,7 @@ const ProtectedRoute = ({ Cmp }) => {
                 navigate('/login')
             }
         })
+            .catch(err => console.log(err))
     }, [authenticate])
 
     return (

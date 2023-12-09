@@ -12,23 +12,24 @@ import axios from 'axios'
 import Home from './pages/Home'
 
 const Pr11 = () => {
-    const [authenticate, setIsAuthenticate] = useState(null)
+    const [authenticate, setAuthenticate] = useState(null)
 
     useEffect(() => {
         axios.get('http://localhost:5500/current-user')
             .then((res) => {
                 if (Object.keys(res.data).length < 1) {
-                    setIsAuthenticate(null)
+                    setAuthenticate(null)
                 } else {
-                    setIsAuthenticate(res.data)
+                    setAuthenticate(res.data)
                 }
             })
+            .catch(err => console.log(err))
     }, [])
 
     return (
         <>
             <BrowserRouter>
-                <AuthContext.Provider value={{ authenticate, setIsAuthenticate }}>
+                <AuthContext.Provider value={{ authenticate, setAuthenticate }}>
                     <Header />
                     <Routes>
                         <Route path='/' element={<Home />} />

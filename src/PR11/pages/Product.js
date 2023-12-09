@@ -4,17 +4,15 @@ import AuthContext from '../authContext'
 
 const Product = () => {
     const [products, setProducts] = useState([])
-    const { authenticate } = useContext(AuthContext)
+    const { authenticate, setAuthenticate } = useContext(AuthContext)
 
     useEffect(() => {
         axios.get('http://localhost:5500/products')
             .then(res => setProducts(res.data))
+            .catch(err => console.log(err))
     }, [])
 
     const addCart = async (product) => {
-        // axios.get('http://localhost:5500/carts',)
-        //     .then(res => {
-        //     })
         try {
             const res = await axios.get(`http://localhost:5500/users/${authenticate.id}`)
             const user = res.data
@@ -34,7 +32,7 @@ const Product = () => {
             }
             let updatedUser = { ...user, cart }
             const resCart = await axios.put(`http://localhost:5500/users/${authenticate.id}`, updatedUser)
-            console.log(resCart.data)
+            setAuthenticate(resCart.data)
         } catch (error) {
             console.log(error)
         }

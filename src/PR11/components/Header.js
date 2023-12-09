@@ -1,15 +1,31 @@
 import axios from 'axios'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import AuthContext from '../authContext'
 
 const Header = () => {
-    const { authenticate, setIsAuthenticate } = useContext(AuthContext)
+    const { authenticate, setAuthenticate } = useContext(AuthContext)
+    const [cartCount, setCartCount] = useState(0)
+
+    useEffect(() => {
+        if (authenticate) {
+            axios.get(`http://localhost:5500/users/${authenticate.id}`)
+                .then(res => {
+                    if (res.data.cart) {
+                        setCartCount(res.data.cart.length)
+                    }
+                })
+                .catch(err => console.log(err))
+        } else {
+            setCartCount(0)
+        }
+    }, [authenticate])
 
     const handleLogout = (e) => {
         e.preventDefault()
         axios.post(`http://localhost:5500/current-user`, {})
-            .then(res => setIsAuthenticate(null))
+            .then(res => setAuthenticate(null))
+            .catch(err => console.log(err))
     }
 
     return (
@@ -23,7 +39,7 @@ const Header = () => {
                         {!authenticate ? <> <Link to="/login">Login</Link>
                             <Link to="/signup">SignUp</Link> </> :
                             <a href='#' onClick={handleLogout} to="/logout">Logout</a>}
-                        <Link to="/cart" className='relative'>Cart <span className='bg-pink-700 text-white w-5 h-5 rounded-full flex items-center absolute translate-x-3/4 -translate-y-1/3 top-0 right-0 justify-center block'>0</span> </Link>
+                        <Link to="/cart" className='relative'>Cart <span className='bg-pink-700 text-white w-5 h-5 rounded-full flex items-center absolute translate-x-3/4 -translate-y-1/3 top-0 right-0 justify-center block'>{cartCount}</span> </Link>
                     </nav>
                 </div>
             </div>

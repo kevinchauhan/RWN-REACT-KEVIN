@@ -5,17 +5,18 @@ import axios from 'axios'
 const Cart = () => {
     const [products, setProducts] = useState([])
     const [user, setUser] = useState()
-    const { authenticate, setIsAuthenticate } = useContext(AuthContext)
+    const { authenticate, setAuthenticate } = useContext(AuthContext)
 
     useEffect(() => {
         if (authenticate) {
-            axios.get(`http://localhost:5500/users?${authenticate.id}`)
+            axios.get(`http://localhost:5500/users/${authenticate.id}`)
                 .then(res => {
-                    if (res.data[0].cart) {
-                        setProducts(res.data[0].cart)
-                        setUser(res.data[0])
+                    if (res.data.cart) {
+                        setProducts(res.data.cart)
+                        setUser(res.data)
                     }
                 })
+                .catch(err => console.log(err))
         }
     }, [])
 
@@ -24,7 +25,7 @@ const Cart = () => {
         newUser.cart.splice(id, 1)
         setUser(newUser)
         axios.put(`http://localhost:5500/users/${authenticate.id}`, user)
-            .then(res => { console.log(res) })
+            .then(res => { setAuthenticate(res.data) })
     }
 
     return (
@@ -65,7 +66,7 @@ const Cart = () => {
                 }
             </div>
             {
-                products.length > 1 &&
+                products.length > 0 &&
                 <div className="mb-6">
                     <button className="w-full p-2 bg-pink-500 text-white font-bold rounded hover:bg-pink-600 focus:outline-none">Proceed to Checkout</button>
                 </div>

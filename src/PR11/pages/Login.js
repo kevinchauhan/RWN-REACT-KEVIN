@@ -8,7 +8,7 @@ const Login = () => {
     const initialInput = { email: '', password: '' }
     const [input, setInput] = useState(initialInput)
     const [errors, setErrors] = useState({})
-    const { authenticate, setIsAuthenticate } = useContext(AuthContext)
+    const { authenticate, setAuthenticate } = useContext(AuthContext)
     const navigate = useNavigate()
 
     const handleChange = (e) => {
@@ -30,10 +30,12 @@ const Login = () => {
                         setErrors({})
                         setInput(initialInput)
                         axios.post(`http://localhost:5500/current-user`, res.data[0])
-                            .then(res => console.log(res.data))
-                        setIsAuthenticate(res.data[0])
+                            .then(res => { })
+                            .catch(err => console.log(err))
+                        setAuthenticate(res.data[0])
                     }
                 })
+                .catch(err => console.log(err))
         }
     }
 
