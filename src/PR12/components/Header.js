@@ -24,11 +24,11 @@ const Header = ({ loggedInUser, setloggedInUser }) => {
     }
 
     return (
-        <header className="bg-white shadow-md py-4">
+        <header className="bg-transparent border-b border-amber-100 py-4">
             <div className="container mx-auto px-4">
                 <div className="flex justify-between items-center">
-                    <Link to="/" className="text-xl font-bold text-gray-800"><img src="https://gumlet.assettype.com/afaqs%2F2021-01%2F15f5f827-8e29-4520-af8d-a0f353b8da17%2Fimages.png?auto=format%2Ccompress&w=1200" className='h-16' alt="" /></Link>
-                    <nav className="space-x-4 text-gray-600 text-lg">
+                    <Link to="/" className="text-xl font-bold text-amber-200">PR-12</Link>
+                    <nav className="space-x-4 text-white text-lg">
                         <Link to="/">Home</Link>
                         {!loggedInUser ? <> <Link to="/login">Login</Link>
                             <Link to="/signup">SignUp</Link> </> :

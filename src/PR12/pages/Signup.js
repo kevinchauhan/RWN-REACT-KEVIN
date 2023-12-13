@@ -95,30 +95,30 @@ const Signup = ({ loggedInUser, setloggedInUser }) => {
     }
 
     return (
-        <div className="w-1/3 mx-auto py-16 px-4">
+        <div className="w-1/3 mx-auto py-16 px-4 text-white">
             <h2 className="text-3xl font-bold mb-6">Sign Up</h2>
             <form onSubmit={handleForm}>
                 <div className="mb-4">
-                    <label htmlFor="name" className="block text-gray-700">Name</label>
-                    <input type="text" id="name" name="name" value={input.name} onChange={handleChange} className="block w-full p-2 border rounded focus:outline-none focus:border-pink-500" />
+                    <label htmlFor="name" className="block">Name</label>
+                    <input type="text" id="name" name="name" value={input.name} onChange={handleChange} className="block w-full p-2 border-amber-200 border bg-transparent rounded-lg focus:outline-none focus:border-amber-300" />
                     <p className='text-red-400'>{errors.name}</p>
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="email" className="block text-gray-700">Email</label>
-                    <input type="email" id="email" name="email" value={input.email} onChange={handleChange} className="block w-full p-2 border rounded focus:outline-none focus:border-pink-500" />
+                    <label htmlFor="email" className="block">Email</label>
+                    <input type="email" id="email" name="email" value={input.email} onChange={handleChange} className="block w-full p-2 border-amber-200 border bg-transparent rounded-lg focus:outline-none focus:border-amber-300" />
                     <p className='text-red-400'>{errors.email}</p>
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="password" className="block text-gray-700">Password</label>
-                    <input type="password" id="password" name="password" value={input.password} onChange={handleChange} className="block w-full p-2 border rounded focus:outline-none focus:border-pink-500" />
+                    <label htmlFor="password" className="block">Password</label>
+                    <input type="password" id="password" name="password" value={input.password} onChange={handleChange} className="block w-full p-2 border-amber-200 border bg-transparent rounded-lg focus:outline-none focus:border-amber-300" />
                     <p className='text-red-400'>{errors.password}</p>
                 </div>
                 <div className="mb-6">
-                    <input type="submit" defaultValue="Sign Up" className="w-full p-2 bg-pink-500 text-white font-bold rounded cursor-pointer hover:bg-pink-600 focus:outline-none" />
+                    <input type="submit" defaultValue="Sign Up" className="w-full p-2 bg-amber-200 text-white font-bold rounded cursor-pointer hover:bg-amber-3 00 focus:outline-none" />
                 </div>
-                <p className="text-gray-500">Already have an account? <Link to="/login" className="text-pink-500">Log In</Link></p>
+                <p className="">Already have an account? <Link to="/login" className="text-amber-200">Log In</Link></p>
             </form>
-            <button className='hover:bg-pink-500 hover:text-white border border-pink-500 rounded text-pink-500 font-medium w-full mt-3 px-2 py-1.5' onClick={googleLogin}><i className="ri-google-fill text-xl align-middle"></i> Sign in with Google</button>
+            <button className='hover:bg-amber-200 hover:text-white border border-amber-200 rounded font-medium w-full mt-3 px-2 py-1.5' onClick={googleLogin}><i className="ri-google-fill text-xl align-middle"></i> Sign in with Google</button>
         </div>
 
     )

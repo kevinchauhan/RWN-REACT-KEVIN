@@ -7,6 +7,7 @@ import { app } from './firebase/firebase';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import ProtectedRoute from './routes/ProtectedRoute';
+import './pr12.css'
 
 const Pr12 = () => {
     const [loggedInUser, setloggedInUser] = useState(null)
